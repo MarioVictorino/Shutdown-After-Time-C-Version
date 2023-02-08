@@ -23,7 +23,7 @@ int main()
     while (run) {
         cin >> tm;
         if (isdigit(tm)) {
-            if (tm >= 0 || tm <= 28800) {
+            if (tm >= 0 && tm <= 28800) {
                 output = ("shutdown /s /t " + tm);
                 system(output);
             }
@@ -31,6 +31,7 @@ int main()
         else if (!(isdigit(tm))) {
             if ((x = to_string(tm)) == "q"){
                 run = false;
+                return;
             }
             else {
                 cout << "Invalid Submission";
