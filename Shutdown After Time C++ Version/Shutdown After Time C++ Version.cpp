@@ -11,14 +11,16 @@ using namespace std;
 
 bool isValid(string);
 
+string ab = "shutdown -a";
+
 string tm;
 string output;
-string x;
 
 int main()
 {
     cout << "Enter time to shutdown in seconds or press q to quit" << endl;
     cout << "1 Hour = 3600 | 2 Hours = 7200 | 3 Hours 10800 | 4 Hours = 14400" << endl;
+    cout << "To abort shutdown press a" << endl;
 
     do {
         cin >> tm;
@@ -27,18 +29,17 @@ int main()
             if (tm == "q") {
                 return 0;
             }
-            /*if (tm == "a") {
-                
-            }*/
+            if (tm == "a") {
+                system(ab.c_str());
+                continue;
+            }
         }
 
         if(!(stoi(tm) >= 0 && stoi(tm) <= 28800)){
             cout << "Invalid Submission" << endl;
-
         } else {
             output = " shutdown -s -t " + tm;
             system(output.c_str());
-            return 0;
         }
     } while(true);
 }
